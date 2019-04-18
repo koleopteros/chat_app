@@ -1,5 +1,11 @@
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+
 import React, { Component } from "react";
+import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
+
+import { registerUser } from '../../actions/authActions';
 
 class Register extends Component {
     constructor() {
@@ -8,6 +14,13 @@ class Register extends Component {
             name:'',
             password:'',
             errors:{}
+        }
+    }
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.errors) {
+            this.setState({
+                errors:nextProps.errors
+            });
         }
     }
     onChange = e => {
@@ -22,6 +35,7 @@ class Register extends Component {
             password: this.state.password,
         };
         console.log(newUser);
+        this.props.registerUser(newUser, this.props.history);
     };
     render() {
         const{errors} = this.state;
@@ -29,9 +43,6 @@ class Register extends Component {
             <div className="container">
                 <div className="row">
                     <div className="col s8 offset-s2">
-                        <Link to='/' className='btn-flat waves-effect'>
-                        <i className='material-icons left'>keyboard_backspace</i>Back to Home
-                        </Link>
                         <div className='col s12' style={{ paddingLeft:'11px'}}>
                             <h4><b>Registration</b></h4>
                         </div>
@@ -41,9 +52,11 @@ class Register extends Component {
                                     value={this.state.name}
                                     error={errors.name}
                                     id='name'
-                                    type='text'    
+                                    type='text'
+                                    className={classnames('',{ invalid:errors.name})}
                                 />
                                 <label htmlFor='name'>Name</label>
+                                <span className='red-text'>{errors.name}</span>
                             </div>
                             <div className='input-field col s12'>
                                 <input onChange={this.onChange}
@@ -71,5 +84,17 @@ class Register extends Component {
         );
     }
 }
+Register.propTypes = {
+    registerUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
+};
+const mapStateToProps = state => ({
+    auth:state.auth,
+    errors: state.errors
+})
 
-export default Register;
+export default connect(
+    mapStateToProps,
+    { registerUser }
+)(withRouter(Register));

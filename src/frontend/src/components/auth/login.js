@@ -1,5 +1,12 @@
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+
 import React, { Component } from "react";
+import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
+
+import { loginUser } from '../../actions/authActions';
+import { stat } from 'fs';
 
 class Login extends Component {
     constructor() {
@@ -10,6 +17,18 @@ class Login extends Component {
             errors:{}
         }
     }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.auth.isAuthenticated) {
+            this.props.history.push('/dashboard');
+        }
+        if (nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors
+            });
+        }
+    }
+
     onChange = e => {
         this.setState({ [e.target.id]: e.target.value });
     };
@@ -22,6 +41,7 @@ class Login extends Component {
             password: this.state.password,
         };
         console.log(user);
+        this.props.loginUser(user);
     };
     render() {
         const{errors} = this.state;
@@ -41,9 +61,11 @@ class Login extends Component {
                                     value={this.state.name}
                                     error={errors.name}
                                     id='name'
-                                    type='text'    
+                                    type='text'
+                                    className={classnames('', {invalid: errors.loginFailed})}
                                     />
                                 <label htmlFor='name'>Name</label>
+                                <span className='red-text'>{errors.loginFailed}</span>
                             </div>
                             <div className='input-field col s12'>
                                 <input onChange={this.onChange}
@@ -51,6 +73,7 @@ class Login extends Component {
                                     error={errors.password}
                                     id="password"
                                     type="password"
+                                    className={classnames('', {invalid: errors.loginFailed})}
                                 />
                                 <label htmlFor="password">Password</label>
                             </div>
@@ -71,4 +94,16 @@ class Login extends Component {
         );
     }
 }
-export default Login;
+
+Login.propTypes = {
+    loginUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors
+});
+
+export default connect(mapStateToProps, {loginUser})(Login);
