@@ -3,11 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8"
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
+    "express": "^4.16.4",
+    "is-empty": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.5.2",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "validator": "^10.11.0"
   },
   "scripts": {
+    "server": "nodemon server.js",
+    "client": "npm run ./src/app.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
