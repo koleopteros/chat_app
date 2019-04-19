@@ -3,7 +3,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 This project used the following guide to learn how to develop a login system with state management in mind, using redux, jwt, and passport.
  - https://blog.bitsrc.io/build-a-login-auth-app-with-mern-stack-part-1-c405048e3669
 
-## Available Scripts
+## Available Scripts "npm run ___"
+
+### 'catch-em-all'
+ - runs 'npm install' for both backend and frontend
 
 ### 'backend'
  - exclusively runs the backend server via nodemon

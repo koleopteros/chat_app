@@ -5,6 +5,7 @@ import jwt_decode from 'jwt-decode';
 
 import './App.css';
 import store from './store';
+import socketIOClient from "socket.io-client";
 
 import setAuthToken from './utils/setAuthTOken';
 import { setCurrentUser, logoutUser } from './actions/authActions';
