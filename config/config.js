@@ -5,8 +5,8 @@ if( process.env.NODE_ENV === "production" ){
     appPort = process.env.PORT;
     baseUrl = "https://chat-archive-application.herokuapp.com" 
 }else{
-    appPort = 3000;
-    baseUrl = "http://localhost"
+    appPort = 5000;
+    baseUrl = "http://127.0.0.1"
 }
     
 module.exports = {

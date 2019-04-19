@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 
 import { loginUser } from '../../actions/authActions';
-import { stat } from 'fs';
 
 class Login extends Component {
     constructor() {
@@ -15,6 +14,12 @@ class Login extends Component {
             name:'',
             password:'',
             errors:{}
+        }
+    }
+
+    componentDidMount(){
+        if(this.props.auth.isAuthenticated){
+            this.props.history.push('/dashboard');
         }
     }
 

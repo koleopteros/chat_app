@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 import { registerUser } from '../../actions/authActions';
 
@@ -16,6 +16,13 @@ class Register extends Component {
             errors:{}
         }
     }
+
+    componentDidMount() {
+        if(this.props.auth.isAuthenticated){
+            this.props.history.push('/dashboard');
+        }
+    }
+
     componentWillReceiveProps(nextProps) {
         if(nextProps.errors) {
             this.setState({
@@ -23,6 +30,7 @@ class Register extends Component {
             });
         }
     }
+    
     onChange = e => {
         this.setState({ [e.target.id]: e.target.value });
     };

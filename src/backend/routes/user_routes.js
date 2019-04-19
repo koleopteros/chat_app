@@ -15,7 +15,7 @@ module.exports = function (router, passport) {
      */
     router.get('/',(req,res,next) => {
         console.log('GET: All users');
-        messageModel.find({}, (err,user) => {
+        userModel.find({}, (err,user) => {
             if (err) throw err;
             res.json(user)
         })
@@ -43,7 +43,7 @@ module.exports = function (router, passport) {
             return res.status(400).json(errors);
         }
         //check if user exists
-        User.findOne({name: req.body.name})
+        userModel.findOne({name: req.body.name})
             .then(user=> {
                 if(user) {
                     return res.status(400).json({name: "Name already exists"})
@@ -58,7 +58,7 @@ module.exports = function (router, passport) {
             bcrypt.hash(newUser.password,salt, (err,hash) => {
                 if(err) throw err;
                 newUser.password = hash;
-                newMsg.save()
+                newUser.save()
                     .then(user => res.json(user))
                     .catch(err => console.log(err));
             });
@@ -77,7 +77,7 @@ module.exports = function (router, passport) {
         const name = req.body.name;
         const password = req.body.password;
 
-        User.findOne({name})
+        userModel.findOne({name})
             .then(user=>{
                 if(!user)
                     return res.status(404).json({loginFailed: "Bad username/password!"});

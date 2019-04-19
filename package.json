@@ -15,9 +15,9 @@
     "validator": "^10.11.0"
   },
   "scripts": {
-    "server": "nodemon server.js",
-    "client": "npm run ./src/app.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "backend": "nodemon server.js",
+    "frontend": "npm start --prefix src/frontend",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
