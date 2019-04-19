@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import PrivateRoute from '../private-route/privateRoute';
+import { BrowserRouter, Router, Route, Switch, Link } from "react-router-dom";
+import EventLog from './eventLog';
+import MessageLog from './messageLog';
+import UserLog from './userLog';
 
 class Dashboard extends Component {
     render() {
@@ -12,9 +17,12 @@ class Dashboard extends Component {
                 <table className="black-text striped">
                     <thead>
                         <tr>
-                            <th scope="col" className="blue white-text center-align">Event History</th>
-                            <th scope="col" className="center-align">Chat History</th>
-                            <th scope="col" className="center-align">Rooms</th>
+                            <th scope="col" className="blue white-text center-align">
+                            <Link to="/eventLog">Event History</Link></th>
+                            <th scope="col" className="center-align">
+                            <Link to="/messageLog">Chat History</Link></th>
+                            <th scope="col" className="center-align">
+                            <Link to="/userLog">Rooms</Link></th>
                         </tr>
                     </thead>  
                 </table>
@@ -54,9 +62,13 @@ class Dashboard extends Component {
                         Filler
                     </div>
                 </div>
-                
             </div>
 
+            <Switch>
+              <PrivateRoute exact path='/eventLog' component={EventLog}/>
+              <PrivateRoute exact path='/messageLog' component={MessageLog}/>
+              <PrivateRoute exact path='/userLog' component={UserLog}/>
+            </Switch>
 
             </div>
         );
