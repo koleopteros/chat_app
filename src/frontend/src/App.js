@@ -5,7 +5,6 @@ import jwt_decode from 'jwt-decode';
 
 import './App.css';
 import store from './store';
-import socketIOClient from "socket.io-client";
 
 import setAuthToken from './utils/setAuthTOken';
 import { setCurrentUser, logoutUser } from './actions/authActions';
@@ -16,6 +15,7 @@ import Landing from "./components/layouts/landing";
 import Dashboard from './components/layouts/mainContainer';
 import Registration from './components/auth/register';
 import Login from './components/auth/login';
+import Chatroom from './components/common/chatroom';
 
 if(localStorage.jwtToken) {
   const token = localStorage.jwtToken;
@@ -42,6 +42,7 @@ class App extends Component {
             <Route exact path='/registration' component={Registration}/>
             <Switch>
               <PrivateRoute exact path='/dashboard' component={Dashboard}/>
+              <PrivateRoute exact path='/chatroom' component={Chatroom}/>
             </Switch>
           </div>
         </Router>
