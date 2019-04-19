@@ -11,3 +11,7 @@ This project used the following guide to learn how to develop a login system wit
  - exclusively runs the frontend (self explanatory :o)
 ### 'dev'
  - use concurrently to run both backend and frontend simultaneously!
+
+## Notes
+As discussed with a good friend, Huy, I learned storing JWT Tokens in local storage is insecure, and would probably be better off using Cookies instead.
+Spent 10 seconds googling and found a pretty good stackoverflow answer regarding storing JWT in local or session storage. Link: https://stackoverflow.com/a/44209185
