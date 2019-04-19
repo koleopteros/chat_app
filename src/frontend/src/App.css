@@ -1,0 +1,12 @@
+.chatroomInput {
+    font-size: 2em;
+    letter-spacing: 3px;
+    margin-bottom:1.5em;
+    text-align: center;
+    width: 400px;
+  }
+.chatroomInput::-webkit-inner-spin-button, 
+.chatroomInput::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}

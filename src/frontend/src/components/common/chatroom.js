@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import socketIOClient from "socket.io-client";
 
-const config = require('../../../../../config/config');
+const config = require('../../config');
 
 class Chatroom extends Component {
     constructor() {
