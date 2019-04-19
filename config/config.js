@@ -21,4 +21,5 @@ module.exports = {
         err: "ERROR",
         namechange: "NAME_CHANGE",
     },
+    api: "/api/v0/",
 };

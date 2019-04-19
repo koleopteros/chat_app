@@ -34,7 +34,7 @@ module.exports = function (router, passport) {
     })
     /**
      * @route POST api/users/
-     * @desc Add new user
+     * @desc Register new user
      * @access Public
      */
     router.post('/', (req,res,next) => {

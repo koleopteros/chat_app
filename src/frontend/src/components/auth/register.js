@@ -52,6 +52,9 @@ class Register extends Component {
                 <div className="row">
                     <div className="col s8 offset-s2">
                         <div className='col s12' style={{ paddingLeft:'11px'}}>
+                            <Link to='/' className='btn-flat waves-effect'>
+                                <i className='material-icons left'>keyboard_backspace</i>Back to Home
+                            </Link>
                             <h4><b>Registration</b></h4>
                         </div>
                         <form noValidate onSubmit={this.onSubmit}>

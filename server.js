@@ -22,6 +22,7 @@ app.use(
 app.use(bodyParser.json());
 app.use(passport.initialize());
 require('./config/passport')(passport);
+const server = require('http').Server(app);
 
 // Routes Setup
 const userRoutes = express.Router();
@@ -37,5 +38,6 @@ app.use('/api/v0/messages', messageRoutes);
 app.use('/api/v0/events', eventRoutes);
 
 const port = config.appPort;
+const socket = require('./src/backend/socket')(server);
 
-app.listen(port, () => console.log(`Server running on port ${port}`));
+server.listen(port, () => console.log(`Server running on port ${port}`));
