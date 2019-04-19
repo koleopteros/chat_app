@@ -1,24 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { logoutUser } from '../../actions/authActions';
 
 class Dashboard extends Component {
     onLogoutClick = e => {
         e.preventDefault();
         this.props.logoutUser();
     };
-    render() {
-        const { user } = this.props.auth;
-    
+    render() {    
         return (
             <div className='container valign-wrapper' style={{height:'80vh'}}>
                 <div className='row'>
-                    <div className='col s12 center-align'> 
-                        <h4> Welcome {user.name} </h4>
-                        <button style = {{ width: '150px', borderRadius: '3px', letterSpacing:'2px', marginTop:'1rem'}}
-                            onClick={this.onLogoutClick}
-                            className='btn btn-large wave-effect waves-light hoverable blue accent-3'> Logout</button>
+                    <div className='col s12 center-align black-text'> 
+                        I'm a normie, Give me chat room
                     </div>
                 </div>
             </div>
@@ -27,7 +21,6 @@ class Dashboard extends Component {
 }
 
 Dashboard.propTypes = {
-    logoutUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired
 };
 
@@ -37,5 +30,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { logoutUser }
+    {  }
 )(Dashboard);

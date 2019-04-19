@@ -38,6 +38,6 @@ app.use('/api/v0/messages', messageRoutes);
 app.use('/api/v0/events', eventRoutes);
 
 const port = config.appPort;
-const socket = require('./src/backend/socket')(server);
+require('./src/backend/socket')(server);
 
 server.listen(port, () => console.log(`Server running on port ${port}`));

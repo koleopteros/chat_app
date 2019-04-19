@@ -9,10 +9,10 @@ import store from './store';
 import setAuthToken from './utils/setAuthTOken';
 import { setCurrentUser, logoutUser } from './actions/authActions';
 import PrivateRoute from './components/private-route/privateRoute';
-import Dashboard from './components/dashboard/dashboard';
 
 import Navigation from "./components/layouts/navigation";
 import Landing from "./components/layouts/landing";
+import Dashboard from './components/layouts/mainContainer';
 import Registration from './components/auth/register';
 import Login from './components/auth/login';
 
