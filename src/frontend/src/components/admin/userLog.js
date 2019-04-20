@@ -1,9 +1,23 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 // I suspect that this is supposed to be what shows
 // When the "Rooms" tab is selected.
 
 class UserLog extends Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            results: []
+        }
+    }
+
+    componentDidMount() {
+        let dbURL = "api/v0/users"
+        axios.get(dbURL).then(res => { this.setState({ results: res.data}) } )
+    }
+
     render() {
         return (
 
@@ -29,6 +43,18 @@ class UserLog extends Component {
                             <td>Insert Status</td>
                             <td>Insert EDIT BUTTON GOES HERE</td>
                         </tr>
+                        {
+                            this.state.results.map(results => 
+                            <tr>
+                            <td>{results.id}</td>
+                            <td>{results.timestamp}</td>
+                            <td>{results.time}</td>
+                            <td>{results.user}</td>
+                            <td>{results.name}</td>
+                            <td>{results.ppid}</td>
+                            </tr>
+                            )
+                        }
                     </tbody>  
                 </table>
             </div>
