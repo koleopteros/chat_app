@@ -16,9 +16,7 @@ mongoose.connect(db, { useNewUrlParser: true })
 
 // App Setup
 const app = express();
-app.use(cors({
-    origin: 'https://secret-wildwood-52771.herokuapp.com/'
-}));
+
 app.use(
     bodyParser.urlencoded({
         extended:false
@@ -28,6 +26,8 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 require('./config/passport')(passport);
 const server = require('http').Server(app);
+
+app.use(cors());
 
 // Routes Setup
 const userRoutes = express.Router();
