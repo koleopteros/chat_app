@@ -18,6 +18,7 @@
     "validator": "^10.11.0"
   },
   "scripts": {
+    "start": "node server.js",
     "catch-em-all": "npm install && cd src/frontend && npm install",
     "backend": "nodemon server.js",
     "frontend": "npm start --prefix src/frontend",
