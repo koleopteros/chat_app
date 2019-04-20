@@ -9,8 +9,12 @@ let room = null;
 let userList = [];
 let messageList = [];
 
+let allowedOrigins = 'https://secret-wildwood-52771.herokuapp.com';
+
 module.exports = server => { 
-    const io = require('socket.io')(server);
+    const io = require('socket.io')(server, {
+        origins: allowedOrigins
+    });
 
     io.on('connection',(socket) => {
         console.log("Client Connected");
