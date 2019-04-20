@@ -5,10 +5,10 @@ import React, { Component } from 'react';
 
 class UserLog extends Component {
     render() {
-        const { user } = this.props.auth;
         return (
 
             <div>
+                <p>User List</p>
                 <table className="black-text striped">
                     <thead>
                         <tr>
@@ -31,20 +31,6 @@ class UserLog extends Component {
                         </tr>
                     </tbody>  
                 </table>
-                
-            
-            <div className='container valign-wrapper' style={{height:'80vh'}}>
-                <div className='row'>
-                    <div className='col s12 center-align black-text'> 
-                        I'm a big boy admin. rawr. {user.name}, {user.iat}, {user.exp}
-                    </div>
-                </div>
-                <div className='row'>
-                    <div className='col s12 center-align black-text'> 
-                        Filler
-                    </div>
-                </div>
-            </div>
             </div>
 
         )

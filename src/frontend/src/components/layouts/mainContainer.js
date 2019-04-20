@@ -13,8 +13,8 @@ class MainContainer extends Component {
                 <nav className="z-depth-0">
                     <div className="nav-wrapper white">
                         { user.name === 'admin'? 
-                        <AdminDashboard/>:
-                        <UserDashboard/>
+                            <AdminDashboard val={0}/>:
+                            <UserDashboard/>
                         }
                     </div>
                 </nav>

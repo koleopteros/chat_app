@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import isLoggedIn from '../../utils/isLoggedIn';
 
 class Landing extends Component {
     render() {
+        if(isLoggedIn){
+            return <Redirect to="/dashboard" />;
+        }
         return (
             <div style={{ height: "75vh" }} className="container valign-wrapper">
                 <div className="row">

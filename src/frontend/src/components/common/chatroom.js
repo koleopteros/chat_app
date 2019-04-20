@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { userInfo } from 'os';
-// import socketIOClient from "socket.io-client";
+import socketIOClient from "socket.io-client";
 
 const config = require('../../config');
 
@@ -15,18 +14,22 @@ class Chatroom extends Component {
         }
     }
 
+    send = () => {
+        const socket = socketIOClient(this.socket.endpoint);
+        socket.emit('new_message', )
+    }
+    
     componentDidMount = () => {
     }
 
     render() {
-        const {user} = this.props.auth;
+        //const {user} = this.props.auth;
         return (
             <div className='container valign-wrapper' style={{height:'80vh'}}>
                 <div className='row'>
                     <div className='chatArea'>
                         {//fill me with <Message props/> 
-                        }asdf
-
+                        }
                     </div>
                     <div className='inputMessage'>
                         <input id="inputMessage" placeholder="Please Type Here, Onii-chan"/>

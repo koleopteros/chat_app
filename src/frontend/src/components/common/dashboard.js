@@ -16,17 +16,19 @@ class Dashboard extends Component {
                     <div className='col s12 center-align black-text'> 
                         <h3 className='title'>Welcome, {user.name}!</h3>
                         <br />
-                        <div>
-                            <h4>Please select a chatroom!</h4>
-                            <input id="chatroomInput" className="chatroomInput" type="number" defaultValue='0'/>
-                        </div>
-                        <div>
-                            <Link
-                                to="/chatroom" style={{ fontFamily: "monospace" }}
-                                className ="col s5 brand-logo center black-text">
-                                <span className="btn btn-medium green accent-4">Enter</span>
-                            </Link>
-                        </div>
+                        <form>
+                            <div>
+                                <h4>Please select a chatroom!</h4>
+                                <input id="chatroomInput" className="chatroomInput" type="number" defaultValue='0'/>
+                            </div>
+                            <div>
+                                <Link
+                                    to="/chatroom" style={{ fontFamily: "monospace" }}
+                                    className ="col s5 brand-logo center black-text">
+                                    <span className="btn btn-medium green accent-4">Enter</span>
+                                </Link>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

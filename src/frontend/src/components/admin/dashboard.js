@@ -1,89 +1,39 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import PrivateRoute from '../private-route/privateRoute';
-import { BrowserRouter, Router, Route, Switch, Link } from "react-router-dom";
-import EventLog from './eventLog';
-import MessageLog from './messageLog';
-import UserLog from './userLog';
+import PropTypes from 'prop-types';
+import Logs from './logs';
 
 class Dashboard extends Component {
-    render() {
-        const { user } = this.props.auth;
-    
+    constructor() {
+        super();
+        this.val = 0;
+    }
+    changeComponent = val => {
+        this.val = val;
+        this.setState({val:this.val})
+    }
+    render() {        
         return (
-            <div className="container">
-
-                <table className="black-text striped">
-                    <thead>
-                        <tr>
-                            <th scope="col" className="blue white-text center-align">
-                            <Link to="/eventLog">Event History</Link></th>
-                            <th scope="col" className="center-align">
-                            <Link to="/messageLog">Chat History</Link></th>
-                            <th scope="col" className="center-align">
-                            <Link to="/userLog">Rooms</Link></th>
-                        </tr>
-                    </thead>  
-                </table>
-
-                <table className="black-text striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Type</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Time</th>
-                            <th scope="col">User</th>
-                            <th scope="col">EventID</th>
-                            <th scope="col">PPID</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Insert Type</td>
-                            <td>Insert Date</td>
-                            <td>Insert Time</td>
-                            <td>Insert User</td>
-                            <td>Insert EventID</td>
-                            <td>Insert PPID</td>
-                        </tr>
-                    </tbody>  
-                </table>
-                
-            
-            <div className='container valign-wrapper' style={{height:'80vh'}}>
-                <div className='row'>
-                    <div className='col s12 center-align black-text'> 
-                        I'm a big boy admin. rawr. {user.name}, {user.iat}, {user.exp}
-                    </div>
+            <div className='row'>
+                <div className="col s12 center-align black-text">
+                    <button onClick={() => {this.changeComponent(0)}} className='btn btn-large'>Event Logs</button>
+                    <button onClick={() => {this.changeComponent(1)}} className='btn btn-large'>Message Logs</button>
+                    <button onClick={() => {this.changeComponent(2)}} className='btn btn-large'>User List</button>
+                    <Logs val={this.val}/>
                 </div>
-                <div className='row'>
-                    <div className='col s12 center-align black-text'> 
-                        Filler
-                    </div>
-                </div>
-            </div>
-
-            <Switch>
-              <PrivateRoute exact path='/eventLog' component={EventLog}/>
-              <PrivateRoute exact path='/messageLog' component={MessageLog}/>
-              <PrivateRoute exact path='/userLog' component={UserLog}/>
-            </Switch>
-
             </div>
         );
     }
 }
 
 Dashboard.propTypes = {
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
-    auth:state.auth
+    auth:state.auth,
 });
 
 export default connect(
-    mapStateToProps,
-    {  }
+    mapStateToProps
 )(Dashboard);
