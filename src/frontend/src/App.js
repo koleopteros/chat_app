@@ -52,7 +52,6 @@ class App extends Component {
               <Route exact path='/' component={Landing}/>
               <Route exact path='/login' component={Login}/>
               <Route exact path='/registration' component={Registration}/>
-              <Route component={Page404}/>
             </Switch>
           </div>
         </Router>
