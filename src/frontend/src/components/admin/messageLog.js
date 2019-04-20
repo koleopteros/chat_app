@@ -1,6 +1,20 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class MessageLog extends Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            results: []
+        }
+    }
+
+    componentDidMount() {
+        let dbURL = "api/v0/messages"
+        axios.get(dbURL).then(res => { this.setState({ results: res.data}) } )
+    }
+
     render() {
         return (
 
@@ -27,8 +41,20 @@ class MessageLog extends Component {
                             <td>Insert Receiver</td>
                             <td>Insert Message</td>
                             <td>Insert Room</td>
-
                         </tr>
+                        {
+                            this.state.results.map(results => 
+                            <tr>
+                            <td>{results.id}</td>
+                            <td>{results.timestamp}</td>
+                            <td>{results.time}</td>
+                            <td>{results.sender}</td>
+                            <td>{results.val}</td>
+                            <td>{results.message}</td>
+                            <td>{results.room}</td>
+                            </tr>
+                            )
+                        }
                     </tbody>  
                 </table>
             </div>
