@@ -8,7 +8,7 @@ import { apiFull, events } from '../config';
 export const registerUser = (userData,history) => dispatch => {
     axios.post(`${apiFull}/users/`,userData)
         .then(res => history.push('login'))
-        .catch(err => dispatch({type:GET_ERRORS, payload:err.response.data}));
+        .catch(err => dispatch({type:GET_ERRORS, payload: null }));
 };
 
 export const loginUser = userData => dispatch => {
@@ -26,7 +26,7 @@ export const loginUser = userData => dispatch => {
             });
             dispatch(setCurrentUser(decoded));
         })
-        .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }));
+        .catch(err => dispatch({ type: GET_ERRORS, payload: null }));
 };
 
 export const setCurrentUser = decoded => {
