@@ -6,7 +6,10 @@ import { connect } from 'react-redux';
 class Landing extends Component {
     render() {
         const {user} = this.props.auth;
+        const {room} = this.props.socket;
         if(user.name){
+            if(room != null)
+                return <Redirect to={`/chatroom/${room}`}/>;
             return <Redirect to="/dashboard" />;
         }
         return (
@@ -42,11 +45,13 @@ class Landing extends Component {
     }
 }
 Landing.propTypes = {
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
+    socket: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-    auth:state.auth
+    auth: state.auth,
+    socket: state.socket
 });
 
 export default connect(

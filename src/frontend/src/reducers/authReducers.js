@@ -1,10 +1,11 @@
-import { SET_CURRENT_USER, USER_LOADING } from "../actions/types";
+import { SET_CURRENT_USER, USER_LOADING } from "../actions/authTypes";
+
 const isEmpty = require('is-empty');
 
 const initialState = {
     isAuthenticated: false,
     user: {},
-    loading:false
+    loading:false,
 };
 
 export default function (state = initialState, action) {

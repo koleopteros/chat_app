@@ -18,3 +18,8 @@ This project used the following guide to learn how to develop a login system wit
 ## Notes
 As discussed with a good friend, Huy, I learned storing JWT Tokens in local storage is insecure, and would probably be better off using Cookies instead.
 Spent 10 seconds googling and found a pretty good stackoverflow answer regarding storing JWT in local or session storage. Link: https://stackoverflow.com/a/44209185
+
+
+Strange things happening with /chatroom route.  The application is unable to maintain the socket room data on a refresh.  The Auth state persists, however.
+
+I placed console.log statements in all the places i could think of, but not a single one triggered.  (Tried the common/dashboard, socketEventAction and Reducer, chatroom).

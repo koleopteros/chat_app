@@ -1,10 +1,12 @@
+let userlist = [];
 module.exports = server => { 
     const io = require('socket.io')(server);
+
     io.on('connection',(socket) => {
         let username;
         let chatroom;
 
-        console.log("Potential client connected...");
+        console.log("Client Connected");
         socket.to(chatroom).emit('client_connection', {
             message: "A new user is connecting...",
             userlist: userlist,
@@ -22,7 +24,7 @@ module.exports = server => {
                 message: data
             })
 
-            axios.post(`${config.baseURL}:${config.dbPort}${config.api}/event/newEvent`,{
+            axios.post(`${config.baseURL}:${config.appPort}${config.api}/events/newEvent`,{
                 type: config.events.msg,
                 timestamp: timestamp,
                 user: usr,
@@ -32,7 +34,7 @@ module.exports = server => {
                 console.log(err);
             })
 
-            axios.post(`${config.baseURL}:${config.dbPort}${config.api}/message/newMessage`, {
+            axios.post(`${config.baseURL}:${config.appPort}${config.api}/messages/newMessage`, {
                 room: room,
                 timestamp: timestamp,
                 sender: usr,
@@ -42,66 +44,6 @@ module.exports = server => {
             }).catch((err) => {
                 console.log(err);
             })
-
-        });
-
-        socket.on('add_user', (data) => {
-
-            username = data.username!=undefined? data.username:"anonymous";
-            chatroom = data.chatroom!=undefined? data.chatroom:-1;
-
-            if(addedUser) return;
-            //store user to socket session
-            socket.username=data.username;
-            addedUser = true;
-            userTimeLog = userTimeLog.concat([socket.username, Date()]);
-            console.log(`${username} connected to room ${chatroom}`);
-            socket.join(chatroom);
-
-            axios.post(`${config.baseURL}:${config.dbPort}${config.api}/event/newEvent`,{
-                type: config.events.conn,
-                timestamp: Date.now(),
-                user: username,
-                val:`Room: ${chatroom}`,
-            }).then((res) => {
-                console.log(`Status: ${res.statusCode}`);
-            }).catch((err) => {
-                console.log(err);
-            })
-
-            socket.to(chatroom).emit('login', {
-                userlist:userlist,
-            });
-        });
-
-        socket.on('change_username', (data) => {
-            username = data.username;
-            chatroom = data.chatroom;
-            axios.post(`${config.baseURL}:${config.dbPort}${config.api}/event/newEvent`,{
-                type: config.events.namechange,
-                timestamp: Date.now(),
-                user: username,
-                val: `${data.chatroom}`,
-            }).then((res) => {
-                console.log(`Status: ${res.statusCode}`);
-            }).catch((err) => {
-                console.log(err);
-            })
-            socket.to(chatroom).emit('change_username', {
-                username:username,
-                chatroom:chatroom,
-                userlist:userlist,
-            })
-        })
-
-        socket.on('username_selected', (data) => {
-            userlist = userlist.concat(data.username);
-            console.log(userlist);
-            socket.to(chatroom).emit('username_selected', {
-                username: data.username,
-                chatroom: data.chatroom,
-                userlist: userlist,
-            });
         });
 
         socket.on('disconnect', () => {
@@ -118,7 +60,7 @@ module.exports = server => {
                 console.log("A user disconnected...");
                 console.log(leaver[0] + " has left.");
 
-                axios.post(`${config.baseURL}:${config.dbPort}${config.api}/event/newEvent`,{
+                axios.post(`${config.baseURL}:${config.dbPort}${config.api}/events/newEvent`,{
                     type: config.events.disconn,
                     timestamp: Date.now(),
                     user: username,

@@ -38,12 +38,13 @@ class App extends Component {
         <Router>
           <div className="App">
             <Navigation/>
-            <Route exact path='/' component={Landing}/>
-            <Route exact path='/login' component={Login}/>
-            <Route exact path='/registration' component={Registration}/>
             <Switch>
-              <PrivateRoute exact path='/dashboard' component={Dashboard}/>
-              <PrivateRoute exact path='/chatroom' component={Chatroom}/>
+              <PrivateRoute path='/dashboard' component={Dashboard}/>
+              <PrivateRoute path='/chatroom' component={Chatroom}/>
+              
+              <Route exact path='/' component={Landing}/>
+              <Route exact path='/login' component={Login}/>
+              <Route exact path='/registration' component={Registration}/>
               <Route component={Page404}/>
             </Switch>
           </div>
