@@ -1,12 +1,35 @@
+body{
+  background: #555555;
+}
+
 .chatroomInput {
     font-size: 2em;
     letter-spacing: 3px;
     margin-bottom:1.5em;
     text-align: center;
     width: 400px;
-  }
+}
+
 .chatroomInput::-webkit-inner-spin-button, 
 .chatroomInput::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
+}
+
+.chatArea {
+  width:70vw;
+  height:50vh;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+  background: aliceblue;
+  padding: 25px;
+  margin: 4em, 0;
+}
+
+.inputMessage {
+  padding: 1em;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+  background: aliceblue;
+  color: black;
 }
