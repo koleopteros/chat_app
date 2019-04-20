@@ -22,10 +22,7 @@
     "backend": "nodemon server.js",
     "frontend": "npm start --prefix src/frontend",
     "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix src/frontend && npm run build --prefix src/frontend"
   },
   "eslintConfig": {
     "extends": "react-app"

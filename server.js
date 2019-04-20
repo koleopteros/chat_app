@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require('passport');
+const path = require('path');
 
 const config = require('./config/config');
 
@@ -37,6 +38,16 @@ require('./src/backend/routes/event_routes')(eventRoutes);
 app.use('/api/v0/users', userRoutes);
 app.use('/api/v0/messages', messageRoutes);
 app.use('/api/v0/events', eventRoutes);
+
+//serve static assets if in prod
+if(process.env.NODE_ENV === 'production'){
+    //set static folder
+    app.use(express.static('frontend/build'));
+
+    app.get('*', (req,res) => {
+        res.sendFile(path.resolve(__dirname,'frontend','build','index.html'));
+    })
+}
 
 const port = config.appPort;
 require('./socket')(server);
