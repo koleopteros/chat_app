@@ -10,7 +10,7 @@ class Dashboard extends Component {
     }
     changeComponent = val => {
         this.val = val;
-        this.setState({val:this.val})
+        this.setState({val:this.val});
     }
     render() {        
         return (
