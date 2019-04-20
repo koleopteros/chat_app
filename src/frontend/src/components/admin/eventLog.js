@@ -40,7 +40,7 @@ class EventLog extends Component {
                                 this.state.results.map(results =>     
                                 <tr key={i++}>
                                     <td>{results.type}</td>
-                                    <td>{Date(results.timestamp)}</td>
+                                    <td>{(new Date(results.timestamp)).toLocaleString()}</td>
                                     <td>{results.user}</td>
                                     <td>{results.val}</td>
                                 </tr>

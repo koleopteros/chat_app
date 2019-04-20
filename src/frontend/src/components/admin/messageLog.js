@@ -34,7 +34,7 @@ class MessageLog extends Component {
                         {
                             this.state.results.map(results => 
                             <tr key={i++}>
-                                <td>{Date(results.timestamp)}</td>
+                                <td>{(new Date(results.timestamp)).toLocaleString()}</td>
                                 <td>{results.sender}</td>
                                 <td>{results.message}</td>
                                 <td>{results.room}</td>

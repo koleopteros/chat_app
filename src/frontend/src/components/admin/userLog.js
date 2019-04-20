@@ -27,7 +27,6 @@ class UserLog extends Component {
                 <table className="black-text striped centered">
                     <thead>
                         <tr>
-                            <th scope="col">Date Created</th>
                             <th scope="col">Username</th>
                         </tr>
                     </thead>
@@ -35,7 +34,6 @@ class UserLog extends Component {
                         {
                             this.state.results.map(results => 
                             <tr key={i++}>
-                            <td>{Date(results.timestamp)}</td>
                             <td>{results.name}</td>
                             </tr>
                             )

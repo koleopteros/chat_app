@@ -16,7 +16,7 @@ import Dashboard from './components/layouts/mainContainer';
 import Registration from './components/auth/register';
 import Login from './components/auth/login';
 import Chatroom from './components/common/chatContainer';
-import Page404 from './components/Page404';
+// import Page404 from './components/Page404';
 import configureSocket from './actions/socket';
 
 if(localStorage.jwtToken) {
