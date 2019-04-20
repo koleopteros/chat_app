@@ -11,9 +11,9 @@ class Dashboard extends Component {
     render() {
         const { user } = this.props.auth;
         let view = 1;
-        const btn1 = () => { view = 1 }
-        const btn2 = () => { view = 2 }
-        const btn3 = () => { view = 3 }
+        const btn1 = () => { this.view.setState(view = 1) }
+        const btn2 = () => { this.view.setState(view = 2) }
+        const btn3 = () => { this.view.setState(view = 3) }
 
     
         return (

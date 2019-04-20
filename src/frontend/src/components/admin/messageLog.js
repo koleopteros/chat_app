@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class MessageLog extends Component {
     render() {
-        const { user } = this.props.auth;
+        // const { user } = this.props.auth;
         return (
 
             <div>
@@ -37,7 +37,7 @@ class MessageLog extends Component {
             <div className='container valign-wrapper' style={{height:'80vh'}}>
                 <div className='row'>
                     <div className='col s12 center-align black-text'> 
-                        I'm a big boy admin. rawr. {user.name}, {user.iat}, {user.exp}
+                        I'm a big boy admin. rawr. {/*{user.name}, {user.iat}, {user.exp}*/}
                     </div>
                 </div>
                 <div className='row'>
