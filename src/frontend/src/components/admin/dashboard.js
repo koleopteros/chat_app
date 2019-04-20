@@ -10,10 +10,16 @@ import UserLog from './userLog';
 class Dashboard extends Component {
     render() {
         const { user } = this.props.auth;
+        let view = 1;
+        const btn1 = () => { view = 1 }
+        const btn2 = () => { view = 2 }
+        const btn3 = () => { view = 3 }
+
     
         return (
             <div className="container">
 
+            {/*
                 <table className="black-text striped">
                     <thead>
                         <tr>
@@ -23,6 +29,20 @@ class Dashboard extends Component {
                             <Link to="/messageLog">Chat History</Link></th>
                             <th scope="col" className="center-align">
                             <Link to="/userLog">Rooms</Link></th>
+                        </tr>
+                    </thead>  
+                </table>
+            */}
+
+                <table className="black-text striped">
+                    <thead>
+                        <tr>
+                            <th scope="col" className="blue white-text center-align">
+                            <button onClick="btn1">Event History</button></th>
+                            <th scope="col" className="center-align">
+                            <button onClick="btn2">Chat History</button></th>
+                            <th scope="col" className="center-align">
+                            <button onClick="btn3">Rooms</button></th>
                         </tr>
                     </thead>  
                 </table>
@@ -50,6 +70,12 @@ class Dashboard extends Component {
                     </tbody>  
                 </table>
                 
+            {/* Attempting to render the appropriate table below this point */}
+            <div className="TableDisplay">
+                { view == 1 ? <EventLog/> : view == 2 ? <MessageLog/> : <UserLog/> }
+            </div>
+            {/* Attempting to render the appropriate table above this point */}
+
             
             <div className='container valign-wrapper' style={{height:'80vh'}}>
                 <div className='row'>
@@ -64,11 +90,13 @@ class Dashboard extends Component {
                 </div>
             </div>
 
+            {/*
             <Switch>
               <PrivateRoute exact path='/eventLog' component={EventLog}/>
               <PrivateRoute exact path='/messageLog' component={MessageLog}/>
               <PrivateRoute exact path='/userLog' component={UserLog}/>
             </Switch>
+            */}
 
             </div>
         );

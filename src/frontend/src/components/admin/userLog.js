@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 // I suspect that this is supposed to be what shows
 // When the "Rooms" tab is selected.
