@@ -3,7 +3,7 @@ let baseUrl;
 
 if( process.env.NODE_ENV === "production" ){
     appPort = process.env.PORT;
-    baseUrl = "https://chat-archive-application.herokuapp.com" 
+    baseUrl = "https://secret-wildwood-52771.herokuapp.com" 
 }else{
     appPort = 5000;
     baseUrl = "http://127.0.0.1"
