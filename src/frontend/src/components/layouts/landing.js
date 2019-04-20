@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import isLoggedIn from '../../utils/isLoggedIn';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 class Landing extends Component {
     render() {
-        if(isLoggedIn){
+        const {user} = this.props.auth;
+        if(user.name){
             return <Redirect to="/dashboard" />;
         }
         return (
@@ -39,4 +41,14 @@ class Landing extends Component {
         )
     }
 }
-export default Landing;
+Landing.propTypes = {
+    auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    auth:state.auth
+});
+
+export default connect(
+    mapStateToProps,
+)(Landing);

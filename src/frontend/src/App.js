@@ -16,6 +16,7 @@ import Dashboard from './components/layouts/mainContainer';
 import Registration from './components/auth/register';
 import Login from './components/auth/login';
 import Chatroom from './components/common/chatroom';
+import Page404 from './components/Page404';
 
 if(localStorage.jwtToken) {
   const token = localStorage.jwtToken;
@@ -43,6 +44,7 @@ class App extends Component {
             <Switch>
               <PrivateRoute exact path='/dashboard' component={Dashboard}/>
               <PrivateRoute exact path='/chatroom' component={Chatroom}/>
+              <Route component={Page404}/>
             </Switch>
           </div>
         </Router>
