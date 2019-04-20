@@ -23,35 +23,19 @@ class UserLog extends Component {
 
             <div>
                 <p>User List</p>
-                <table className="black-text striped">
+                <table className="black-text striped centered">
                     <thead>
                         <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Room</th>
                             <th scope="col">Date Created</th>
-                            <th scope="col">Date Edited</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Edit Button Column</th>
+                            <th scope="col">Username</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Insert ID</td>
-                            <td>Insert Room</td>
-                            <td>Insert Date Created</td>
-                            <td>Insert Date Edited</td>
-                            <td>Insert Status</td>
-                            <td>Insert EDIT BUTTON GOES HERE</td>
-                        </tr>
                         {
                             this.state.results.map(results => 
                             <tr>
-                            <td>{results.id}</td>
-                            <td>{results.timestamp}</td>
-                            <td>{results.time}</td>
-                            <td>{results.user}</td>
+                            <td>{Date(results.timestamp)}</td>
                             <td>{results.name}</td>
-                            <td>{results.ppid}</td>
                             </tr>
                             )
                         }

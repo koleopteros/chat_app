@@ -25,40 +25,30 @@ class EventLog extends Component {
 
             <div className="container">
             <p>Event Logs</p>
-                <table className="black-text striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Type</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Time</th>
-                            <th scope="col">User</th>
-                            <th scope="col">EventID</th>
-                            <th scope="col">PPID</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Insert Type</td>
-                            <td>Insert Date</td>
-                            <td>Insert Time</td>
-                            <td>Insert User</td>
-                            <td>Insert EventID</td>
-                            <td>Insert PPID</td>
-                        </tr>
-                        {
-                            this.state.results.map(results => 
+                <div className='responsive-table table-status-sheet'>
+                    <table className="black-text striped centered">
+                        <thead>
                             <tr>
-                            <td>{results.type}</td>
-                            <td>{results.timestamp}</td>
-                            <td>{results.time}</td>
-                            <td>{results.user}</td>
-                            <td>{results.val}</td>
-                            <td>{results.ppid}</td>
+                                <th scope="col">Type</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">User</th>
+                                <th scope="col">EventID</th>
                             </tr>
-                            )
-                        }
-                    </tbody>  
-                </table>
+                        </thead>
+                        <tbody>
+                            {
+                                this.state.results.map(results => 
+                                <tr>
+                                <td>{results.type}</td>
+                                <td>{Date(results.timestamp)}</td>
+                                <td>{results.user}</td>
+                                <td>{results.val}</td>
+                                </tr>
+                                )
+                            }
+                        </tbody>  
+                    </table>
+                </div>
             </div>
 
         )
