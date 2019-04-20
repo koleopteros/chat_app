@@ -19,6 +19,7 @@ class UserLog extends Component {
     }
 
     render() {
+        var i=0;
         return (
 
             <div>
@@ -33,7 +34,7 @@ class UserLog extends Component {
                     <tbody>
                         {
                             this.state.results.map(results => 
-                            <tr>
+                            <tr key={i++}>
                             <td>{Date(results.timestamp)}</td>
                             <td>{results.name}</td>
                             </tr>

@@ -7,9 +7,19 @@ import PropTypes from 'prop-types';
 import { connectUser } from '../../actions/socketEventActions';
 
 class Dashboard extends Component {
+    constructor(){
+        super();
+        this.state = {
+            isButtonDisabled: true
+        }
+    }
+
     onChange = e => {
-        if(this.props.socket.room == null)
-            this.setState({ [e.target.id]: e.target.value });
+        if(this.state.isButtonDisabled){
+            this.setState({ isButtonDisabled:false,
+                [e.target.id]: e.target.value });    
+        }
+        this.setState({ [e.target.id]: e.target.value });
     };
 
     onSubmit = e => {
@@ -25,6 +35,7 @@ class Dashboard extends Component {
     render() {    
         const { user } = this.props.auth;
         const { room } = this.props.socket;
+        
         if(room) {
         return (<Redirect to={`/chatroom/?room=${room}`}/>);
         }
@@ -37,10 +48,10 @@ class Dashboard extends Component {
                         <form noValidate onSubmit={this.onSubmit}>
                             <div>
                                 <h4>Please select a chatroom!</h4>
-                                <input id="roomNumber" className="chatroomInput" type="number" defaultValue='0' onChange={this.onChange}/>
+                                <input id="roomNumber" className="chatroomInput" type="number" placeholder='Put a number in me!' onChange={this.onChange}/>
                             </div>
                             <div>
-                                <button className='btn btn-medium green accent-4'>Enter</button>
+                                <button className={`btn btn-medium green accent-4 ${this.state.isButtonDisabled? 'disabled' : ''}`} >Enter</button>
                             </div>
                         </form>
                     </div>
@@ -58,7 +69,7 @@ Dashboard.propTypes = {
 
 const mapStateToProps = state => ({
     auth:state.auth,
-    socket:state.socket
+    socket:state.socket,
 });
 
 export default connect(

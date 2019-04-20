@@ -33,7 +33,7 @@ tbody {
 }
 
 .chatArea {
-  width:70vw;
+  width:500px;
   height:50vh;
   border-top-left-radius: 1em;
   border-top-right-radius: 1em;
@@ -44,6 +44,7 @@ tbody {
 
 .inputMessage {
   padding: 1em;
+  width:500px;
   border-bottom-left-radius: 1em;
   border-bottom-right-radius: 1em;
   background: aliceblue;

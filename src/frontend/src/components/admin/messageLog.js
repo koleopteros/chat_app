@@ -16,6 +16,7 @@ class MessageLog extends Component {
     }
 
     render() {
+        var i = 0;
         return (
 
             <div>
@@ -32,7 +33,7 @@ class MessageLog extends Component {
                     <tbody>
                         {
                             this.state.results.map(results => 
-                            <tr>
+                            <tr key={i++}>
                                 <td>{Date(results.timestamp)}</td>
                                 <td>{results.sender}</td>
                                 <td>{results.message}</td>

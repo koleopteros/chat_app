@@ -1,4 +1,6 @@
 import { SET_CURRENT_USER, USER_LOADING } from "../actions/authTypes";
+import {socket} from '../App';
+import { DISCONNECTING } from "../actions/socketEventTypes";
 
 const isEmpty = require('is-empty');
 
@@ -11,17 +13,22 @@ const initialState = {
 export default function (state = initialState, action) {
     switch (action.type){
         case SET_CURRENT_USER:
-            return {
+            var user = state.user.name
+            state = {
                 ...state,
                 isAuthenticated: !isEmpty(action.payload),
                 user: action.payload
             };
+            socket && socket.emit(DISCONNECTING, user);
+            break;
         case USER_LOADING:
-            return {
+            state = {
                 ...state,
                 loading: true
             };
+            break;
         default:
-            return state;
+            break;
     }
+    return state;
 }

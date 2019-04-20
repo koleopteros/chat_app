@@ -31,7 +31,7 @@ class Navigation extends Component {
                         </Link>
                         { user.name ? 
                         <div className='right'>
-                            <span style={{ fontFamily: "monospace" }} className='col s5 black-text'>{room? `Room: ${room} `:''}{`User: ${user.name} `}</span>
+                            <span style={{ fontFamily: "monospace" }} className='col s6 black-text'>{room? `(${room}) `:''}{`User: ${user.name} `}</span>
                             <button style = {{ width: '100px', borderRadius: '3px', margin:'1rem'}}
                                 onClick={this.onLogoutClick}
                                 className='btn-small wave-effect waves-light hoverable red accent-4'>Logout</button>

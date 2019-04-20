@@ -20,7 +20,7 @@ class EventLog extends Component {
     }
 
     render() {
-
+        var i = 0;
         return (
 
             <div className="container">
@@ -37,12 +37,12 @@ class EventLog extends Component {
                         </thead>
                         <tbody>
                             {
-                                this.state.results.map(results => 
-                                <tr>
-                                <td>{results.type}</td>
-                                <td>{Date(results.timestamp)}</td>
-                                <td>{results.user}</td>
-                                <td>{results.val}</td>
+                                this.state.results.map(results =>     
+                                <tr key={i++}>
+                                    <td>{results.type}</td>
+                                    <td>{Date(results.timestamp)}</td>
+                                    <td>{results.user}</td>
+                                    <td>{results.val}</td>
                                 </tr>
                                 )
                             }

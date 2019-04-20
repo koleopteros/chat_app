@@ -21,6 +21,7 @@ app.use(
 );
 app.use(bodyParser.json());
 app.use(passport.initialize());
+// app.use(cors);
 require('./config/passport')(passport);
 const server = require('http').Server(app);
 
@@ -38,6 +39,6 @@ app.use('/api/v0/messages', messageRoutes);
 app.use('/api/v0/events', eventRoutes);
 
 const port = config.appPort;
-require('./src/backend/socket')(server);
+require('./socket')(server);
 
 server.listen(port, () => console.log(`Server running on port ${port}`));

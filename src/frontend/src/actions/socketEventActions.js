@@ -2,13 +2,19 @@ import axios from 'axios';
 import config, {apiFull} from '../config';
 import {CONNECTING,DISCONNECTING} from './socketEventTypes';
 
+// Dispatches resulting from actual Socket Events are located in ./socket.js
+
+/**
+ * 
+ * @param {user, room} data 
+ */
 export const connectUser = data => dispatch => {
     axios.post(`${apiFull}/events/newEvent`, {
         type: CONNECTING,
         timestamp: Date.now(),
         user: data.user,
         val: data.room,
-    }).then(res=> {dispatch(setCurrentRoom(data.room));
+    }).then(res=> {dispatch(setCurrentRoom(data));
     }).catch(err => { dispatch({type: config.events.err, payload: null}) });
 };
 
