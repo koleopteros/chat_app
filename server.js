@@ -42,10 +42,10 @@ app.use('/api/v0/events', eventRoutes);
 //serve static assets if in prod
 if(process.env.NODE_ENV === 'production'){
     //set static folder
-    app.use(express.static('frontend/build'));
+    app.use(express.static('src/frontend/build'));
 
     app.get('*', (req,res) => {
-        res.sendFile(path.resolve(__dirname,'frontend','build','index.html'));
+        res.sendFile(path.resolve(__dirname,'src','frontend','build','index.html'));
     })
 }
 
