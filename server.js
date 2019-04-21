@@ -53,6 +53,7 @@ if(process.env.NODE_ENV === 'production'){
 }
 
 const port = config.appPort;
-require('./socket')(server);
 
 server.listen(port, () => console.log(`Server running on port ${port}`));
+
+require('./socket')(server);
