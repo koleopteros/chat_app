@@ -2,16 +2,9 @@ let appPort;
 let baseUrl;
 let api = '/api/v0';
 let apiFull;
-if( process.env.NODE_ENV === "production" ){
-    appPort = process.env.PORT;
-    baseUrl = "https://secret-wildwood-52771.herokuapp.com" 
-    apiFull = `${baseUrl}:${appPort}${api}`
-}else{
     appPort = 5000;
     baseUrl = "http://localhost"
     apiFull = api
-}
-    
 module.exports = {
     appPort: appPort,
     baseURL: baseUrl,
