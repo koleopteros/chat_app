@@ -3,7 +3,7 @@ import config from '../config';
 import { UPDATE_MESSAGES, STORE_MESSAGES_TO_STATE, SEND_CURRENT_USERS, SEND_CURRENT_MESSAGES, STORE_USERS_TO_STATE, SEND_MESSAGE, GET_MESSAGES, JOIN_ROOM } from './socketEventTypes';
 
 
-const socket = io(`:${config.appPort}`);
+const socket = io();
 
 const configureSocket = dispatch => {
     socket.on('connect',() => {
