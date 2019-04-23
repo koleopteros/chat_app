@@ -6,13 +6,13 @@ import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from "./authTypes";
 import { apiFull, events } from '../config';
 
 export const registerUser = (userData,history) => dispatch => {
-    axios.post(`${apiFull}/users/`,userData)
+    axios.post(`${apiFull}users/`,userData)
         .then(res => history.push('login'))
         .catch(err => dispatch({type:GET_ERRORS, payload: null }));
 };
 
 export const loginUser = userData => dispatch => {
-    axios.post(`${apiFull}/users/login`,userData)
+    axios.post(`${apiFull}users/login`,userData)
         .then(res => {
             const { token } = res.data;
             localStorage.setItem('jwtToken',token);
@@ -45,7 +45,7 @@ export const setUserLoading = () => {
 export const logoutUser = username => dispatch => {
     localStorage.removeItem('jwtToken');
     setAuthToken(false);
-    axios.post(`${apiFull}/events/newEvent`,{
+    axios.post(`${apiFull}events/newEvent`,{
         type: events.logout,
         timestamp: Date.now(),
         user: username,

@@ -12,6 +12,7 @@ class Dashboard extends Component {
         this.state = {
             isButtonDisabled: true
         }
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     onChange = e => {

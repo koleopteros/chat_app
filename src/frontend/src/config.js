@@ -1,6 +1,6 @@
 let appPort;
 let baseUrl;
-let api = '/api/v0';
+let api = '/api/v0/';
 let apiFull;
     appPort = 5000;
     baseUrl = "http://localhost"
