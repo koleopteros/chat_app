@@ -3,7 +3,7 @@ let baseUrl;
 let api = '/api/v0/';
 let apiFull;
     appPort = 5000;
-    baseUrl = "http://localhost"
+    baseUrl = "https://secret-wildwood-52771.herokuapp.com"
     apiFull = api
 module.exports = {
     appPort: appPort,
